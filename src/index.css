@@ -1,0 +1,257 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --canvas-dark: #090D16;
+    --surface-raised: #131B2E;
+    --surface-border: #1E293B;
+    --accent-red: #EF4444;
+    --accent-gold: #F59E0B;
+    --accent-green: #10B981;
+    color-scheme: dark;
+  }
+
+  html, body, #root {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden !important;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    touch-action: manipulation;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    background-color: var(--canvas-dark);
+    color: #F8FAFC;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    overflow-x: hidden !important;
+    -webkit-tap-highlight-color: transparent;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Custom Automotive Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090D16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Tabular figures for scales & currency */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Glassmorphism backdrop */
+.glass-panel {
+  background: rgba(19, 27, 46, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 41, 59, 0.8);
+}
+
+/* 3D Perspective card container */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Real-time Handwriting Signature Animation (Higgsfield Seedance 2.5 Motion Dynamics) */
+.signature-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================================
+   SINGLE-RUN MODE (e.g. Intro screen or manual replay)
+   ======================================================== */
+.stroke-crown.single-run {
+  animation: singleDrawCrown 0.65s 0.15s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.stroke-s.single-run {
+  animation: singleDrawS 0.85s 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.stroke-wayam.single-run {
+  animation: singleDrawWayam 1.45s 1.55s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.stroke-underline.single-run {
+  animation: singleDrawUnderline 0.55s 2.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.dot-1.single-run {
+  opacity: 0;
+  animation: singleDotPop 0.25s 3.45s ease-out forwards;
+}
+
+.dot-2.single-run {
+  opacity: 0;
+  animation: singleDotPop 0.25s 3.65s ease-out forwards;
+}
+
+@keyframes singleDrawCrown {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes singleDrawS {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes singleDrawWayam {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes singleDrawUnderline {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes singleDotPop {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ========================================================
+   CONTINUOUS LOOP MODE (About Creators Page)
+   Total cycle: 5.8s
+   - 0s-0.75s: Crown signs
+   - 0.75s-1.6s: S signs
+   - 1.6s-3.0s: 'wayam' cursive signs
+   - 3.0s-3.55s: Underline sweeps
+   - 3.55s-3.9s: Dots pop
+   - 3.9s-5.2s: Full signature holds in glory with ambient breathing glow
+   - 5.2s-5.6s: Soft fade out
+   - 5.6s-5.8s: Clean reset to 0s for seamless infinite loop
+   ======================================================== */
+.signature-looping .stroke-crown {
+  animation: loopDrawCrown 5.8s infinite ease-in-out;
+}
+
+.signature-looping .stroke-s {
+  animation: loopDrawS 5.8s infinite ease-in-out;
+}
+
+.signature-looping .stroke-wayam {
+  animation: loopDrawWayam 5.8s infinite ease-in-out;
+}
+
+.signature-looping .stroke-underline {
+  animation: loopDrawUnderline 5.8s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.signature-looping .dot-1 {
+  animation: loopDot1 5.8s infinite ease-out;
+}
+
+.signature-looping .dot-2 {
+  animation: loopDot2 5.8s infinite ease-out;
+}
+
+.signature-looping .seedance-pen-spark {
+  animation: loopPenSpark 5.8s infinite cubic-bezier(0.3, 0, 0.2, 1);
+}
+
+@keyframes loopDrawCrown {
+  0% { stroke-dashoffset: 1; opacity: 1; }
+  2% { stroke-dashoffset: 1; }
+  14% { stroke-dashoffset: 0; }
+  90% { stroke-dashoffset: 0; opacity: 1; }
+  95% { opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 0; }
+}
+
+@keyframes loopDrawS {
+  0%, 14% { stroke-dashoffset: 1; opacity: 1; }
+  28% { stroke-dashoffset: 0; }
+  90% { stroke-dashoffset: 0; opacity: 1; }
+  95% { opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 0; }
+}
+
+@keyframes loopDrawWayam {
+  0%, 28% { stroke-dashoffset: 1; opacity: 1; }
+  52% { stroke-dashoffset: 0; }
+  90% { stroke-dashoffset: 0; opacity: 1; }
+  95% { opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 0; }
+}
+
+@keyframes loopDrawUnderline {
+  0%, 52% { stroke-dashoffset: 1; opacity: 1; }
+  63% { stroke-dashoffset: 0; }
+  90% { stroke-dashoffset: 0; opacity: 1; }
+  95% { opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 0; }
+}
+
+@keyframes loopDot1 {
+  0%, 63% { opacity: 0; transform: scale(0); transform-origin: 771px 548px; }
+  66% { opacity: 1; transform: scale(1.6); transform-origin: 771px 548px; }
+  69% { opacity: 1; transform: scale(1); transform-origin: 771px 548px; }
+  90% { opacity: 1; }
+  95% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes loopDot2 {
+  0%, 68% { opacity: 0; transform: scale(0); transform-origin: 835px 555px; }
+  71% { opacity: 1; transform: scale(1.6); transform-origin: 835px 555px; }
+  74% { opacity: 1; transform: scale(1); transform-origin: 835px 555px; }
+  90% { opacity: 1; }
+  95% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes loopPenSpark {
+  0% { opacity: 0; transform: translate(212px, 445px) scale(0.5); }
+  2% { opacity: 1; transform: translate(212px, 445px) scale(1.3); }
+  14% { opacity: 1; transform: translate(354px, 438px) scale(1.1); }
+  28% { opacity: 1; transform: translate(44px, 596px) scale(1.2); }
+  52% { opacity: 1; transform: translate(861px, 465px) scale(1.1); }
+  63% { opacity: 1; transform: translate(987px, 476px) scale(1.4); }
+  66% { opacity: 0.8; transform: translate(771px, 548px) scale(1.2); }
+  71% { opacity: 0.8; transform: translate(835px, 555px) scale(1.2); }
+  74% { opacity: 0; transform: translate(835px, 555px) scale(0); }
+  100% { opacity: 0; }
+}
+
+
