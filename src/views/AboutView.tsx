@@ -70,7 +70,7 @@ export const AboutView: React.FC = () => {
           </div>
 
           <p className="text-sm text-slate-300 leading-relaxed">
-            Passionate diecast collector focusing on 1:64 JDM classics and 1:18 resin supercars. Spearheads product vision, user experience, and collector platform direction for CastVault.
+            Passionate diecast collector of 1:64 TO 1:18 models. Mainly a HotWheels collector. HotWheels Cars make him fall in love with DieCast cars. Difficulty in storing the info about the cars made him to create a Virtual Garage for the DieCast collects which is known as The CastVault.
           </p>
 
           {/* Verified Social Anchors for Swayam */}
