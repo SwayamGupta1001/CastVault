@@ -343,6 +343,7 @@ export const AddModelModal: React.FC<AddModelModalProps> = ({
                   <option value="Mini GT Standard / Chase">Mini GT Standard / Chase</option>
                   <option value="Other / Special Series">Other / Special Series</option>
                   <option value="Mainline">Mainline</option>
+                  <option value="No Special Series">No Special Series</option>
                 </select>
               </div>
 
