@@ -16,7 +16,6 @@ export const AppDownloadModal: React.FC<AppDownloadModalProps> = ({ isOpen, onCl
   });
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isInstalled, setIsInstalled] = useState(false);
-  const [isDownloadingApk, setIsDownloadingApk] = useState(false);
 
   useEffect(() => {
 
@@ -50,39 +49,7 @@ export const AppDownloadModal: React.FC<AppDownloadModalProps> = ({ isOpen, onCl
         setIsInstalled(true);
       }
       setDeferredPrompt(null);
-    } else {
-      handleDownloadApk();
     }
-  };
-
-  const handleDownloadApk = () => {
-    triggerHaptic('success');
-    setIsDownloadingApk(true);
-
-    const dummyApkContent = `CastVault Android Web App Installer v1.0.0
-Package: com.castvault.app
-Platform: Android OS (ARM64 / x86_64)
-AppName: CastVault Scale Model Collector
-Timestamp: ${new Date().toISOString()}
-
-To complete native installation on Android:
-1. Open https://castvault.app in Chrome on your Android phone.
-2. Tap Chrome Menu (⋮) -> 'Install App'.
-3. CastVault will run natively as an APK container with offline database!`;
-
-    const blob = new Blob([dummyApkContent], { type: 'application/vnd.android.package-archive' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'CastVault-v1.0.0-Android.apk';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-
-    setTimeout(() => {
-      setIsDownloadingApk(false);
-    }, 1200);
   };
 
   return (
@@ -180,14 +147,15 @@ To complete native installation on Android:
                   </button>
                 )}
 
-                <button
-                  onClick={handleDownloadApk}
-                  disabled={isDownloadingApk}
-                  className="w-full py-3 px-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-emerald-500/30 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all active:scale-95"
+                <a
+                  href="/castvault.apk"
+                  download="CastVault-Offline.apk"
+                  onClick={() => triggerHaptic('success')}
+                  className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/60 border border-emerald-500/40 transition-all active:scale-95 text-center"
                 >
-                  <Download className="w-4 h-4" />
-                  <span>{isDownloadingApk ? 'Downloading APK Package...' : 'Download CastVault.apk (Direct Download)'}</span>
-                </button>
+                  <Download className="w-4 h-4 stroke-[3]" />
+                  <span>Download CastVault Offline APK 🤖</span>
+                </a>
               </div>
             )}
 
