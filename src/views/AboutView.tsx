@@ -76,7 +76,7 @@ export const AboutView: React.FC = () => {
           {/* Verified Social Anchors for Swayam */}
           <div className="flex flex-wrap gap-3 pt-3 border-t border-slate-800/80">
             <a
-              href="https://www.linkedin.com"
+              href="https://www.linkedin.com/in/swayam-gupta-417b86423?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => triggerHaptic('light')}
@@ -90,7 +90,7 @@ export const AboutView: React.FC = () => {
             </a>
 
             <a
-              href="https://github.com/SwayamGupta1001/CastVault"
+              href="https://github.com/SwayamGupta1001"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => triggerHaptic('light')}
@@ -104,7 +104,7 @@ export const AboutView: React.FC = () => {
             </a>
 
             <a
-              href="https://www.instagram.com"
+              href="https://www.instagram.com/swayam__100108?dlrf=MTdlMHZqOHcydHk1dQ%3D%3D&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => triggerHaptic('light')}
