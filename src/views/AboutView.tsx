@@ -33,8 +33,12 @@ export const AboutView: React.FC = () => {
         {/* Lead Creator Card: Swayam Gupta */}
         <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800/90 space-y-6 hover:border-slate-700 transition-all max-w-3xl">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6 text-center md:text-left">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-red-600 via-red-500 to-amber-600 flex items-center justify-center text-white font-mono font-extrabold text-3xl shadow-xl shadow-red-950/50 border border-red-400/30 flex-shrink-0">
-              SG
+            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-red-500/40 shadow-2xl shadow-red-950/60 flex-shrink-0 relative group">
+              <img 
+                src="/swayam.jpg" 
+                alt="Swayam Gupta - Founder & Sole Creator of CastVault" 
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
             
             <div className="space-y-2 flex-1 min-w-0 w-full">
