@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { DiecastItem, ScaleOption, ConditionOption, CompressionResult } from '../types';
 import { MANUFACTURERS } from '../data/manufacturers';
 import { compressImageToWebP } from '../utils/imageCompressor';
@@ -34,11 +34,7 @@ export const AddModelModal: React.FC<AddModelModalProps> = ({
   const [serialNumber, setSerialNumber] = useState(initialItem?.serialNumber || '');
   const [notes, setNotes] = useState(initialItem?.notes || '');
   
-  const [photos, setPhotos] = useState<string[]>(
-    initialItem?.photos && initialItem.photos.length > 0
-      ? initialItem.photos
-      : ['https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80']
-  );
+  const [photos, setPhotos] = useState<string[]>(initialItem?.photos || []);
   const [isCompressing, setIsCompressing] = useState(false);
   const [compressionFeedback, setCompressionFeedback] = useState<CompressionResult | null>(null);
   
@@ -46,6 +42,42 @@ export const AddModelModal: React.FC<AddModelModalProps> = ({
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const makeInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      if (initialItem) {
+        setMake(initialItem.vehicleMake || '');
+        setModel(initialItem.vehicleModel || '');
+        setScale(initialItem.scale || '1:64');
+        setManufacturerId(initialItem.manufacturerId || defaultBrandId || 'm-hotwheels');
+        setCustomManufacturer(initialItem.customManufacturer || '');
+        setSeries(initialItem.series || 'Hot Wheels Silver Series');
+        setCondition(initialItem.condition || 'Mint in Box');
+        setReleaseYear(initialItem.releaseYear?.toString() || new Date().getFullYear().toString());
+        setPurchasePrice(initialItem.purchasePrice?.toString() || '');
+        setEstimatedValue(initialItem.estimatedValue?.toString() || '');
+        setSerialNumber(initialItem.serialNumber || '');
+        setNotes(initialItem.notes || '');
+        setPhotos(initialItem.photos || []);
+      } else {
+        setMake('');
+        setModel('');
+        setScale('1:64');
+        setManufacturerId(defaultBrandId || 'm-hotwheels');
+        setCustomManufacturer('');
+        setSeries('Hot Wheels Silver Series');
+        setCondition('Mint in Box');
+        setReleaseYear(new Date().getFullYear().toString());
+        setPurchasePrice('');
+        setEstimatedValue('');
+        setSerialNumber('');
+        setNotes('');
+        setPhotos([]);
+      }
+      setCompressionFeedback(null);
+      setErrors({});
+    }
+  }, [isOpen, initialItem, defaultBrandId]);
 
   const scales: ScaleOption[] = ['1:64', '1:43', '1:24', '1:18', '1:12', 'Other'];
   
@@ -121,7 +153,7 @@ export const AddModelModal: React.FC<AddModelModalProps> = ({
       currency: 'USD',
       serialNumber: serialNumber.trim() || undefined,
       notes: notes.trim() || undefined,
-      photos: photos.length > 0 ? photos : ['https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80'],
+      photos: photos,
       isPrimaryPhotoIndex: 0,
       createdAt: initialItem?.createdAt || new Date().toISOString(),
       updatedAt: new Date().toISOString()
