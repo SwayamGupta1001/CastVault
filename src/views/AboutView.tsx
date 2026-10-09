@@ -1,22 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { triggerHaptic } from '../utils/haptics';
-import { Sparkles, CheckCircle, Bug, Send, ExternalLink } from 'lucide-react';
+import { Sparkles, ExternalLink } from 'lucide-react';
 import { SignatureAnimation } from '../components/SignatureAnimation';
 import { CastVaultLogo } from '../components/CastVaultLogo';
 
 export const AboutView: React.FC = () => {
-  const [bugMessage, setBugMessage] = useState('');
-  const [isBugSubmitted, setIsBugSubmitted] = useState(false);
-
-  const handleBugSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!bugMessage.trim()) return;
-    triggerHaptic('success');
-    setIsBugSubmitted(true);
-    setBugMessage('');
-    setTimeout(() => setIsBugSubmitted(false), 4000);
-  };
-
   return (
     <div className="space-y-8 pb-24 md:pb-12 max-w-4xl mx-auto">
       {/* Platform Mission Hero Banner */}
@@ -118,38 +106,6 @@ export const AboutView: React.FC = () => {
             </a>
           </div>
         </div>
-      </div>
-
-      {/* Feature Request & Feedback */}
-      <div className="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4">
-        <h3 className="text-base font-bold text-slate-200 font-mono uppercase flex items-center gap-2">
-          <Bug className="w-4 h-4 text-red-400" />
-          <span>Contact Creator & Suggest Feature</span>
-        </h3>
-
-        {isBugSubmitted ? (
-          <div className="p-4 rounded-2xl bg-emerald-950/60 border border-emerald-500/40 text-xs text-emerald-300 flex items-center gap-2 animate-in fade-in">
-            <CheckCircle className="w-4 h-4 text-emerald-400" />
-            <span>Thank you! Your message has been sent directly to Swayam.</span>
-          </div>
-        ) : (
-          <form onSubmit={handleBugSubmit} className="space-y-3">
-            <textarea
-              value={bugMessage}
-              onChange={(e) => setBugMessage(e.target.value)}
-              rows={3}
-              placeholder="Suggest a brand directory addition or report a casting search issue..."
-              className="w-full bg-slate-900 text-xs text-slate-100 p-3.5 rounded-2xl border border-slate-800 focus:border-red-500 focus:outline-none resize-none"
-            />
-            <button
-              type="submit"
-              className="py-2.5 px-5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2 shadow-md shadow-red-950/50"
-            >
-              <Send className="w-3.5 h-3.5" />
-              <span>Send Message</span>
-            </button>
-          </form>
-        )}
       </div>
     </div>
   );

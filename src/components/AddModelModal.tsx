@@ -26,6 +26,7 @@ export const AddModelModal: React.FC<AddModelModalProps> = ({
   const [scale, setScale] = useState<ScaleOption>(initialItem?.scale || '1:64');
   const [manufacturerId, setManufacturerId] = useState(initialItem?.manufacturerId || defaultBrandId || 'm-hotwheels');
   const [customManufacturer, setCustomManufacturer] = useState(initialItem?.customManufacturer || '');
+  const [series, setSeries] = useState(initialItem?.series || 'Hot Wheels Silver Series');
   const [condition, setCondition] = useState<ConditionOption>(initialItem?.condition || 'Mint in Box');
   const [releaseYear, setReleaseYear] = useState<string>(() => initialItem?.releaseYear?.toString() || new Date().getFullYear().toString());
   const [purchasePrice, setPurchasePrice] = useState<string>(initialItem?.purchasePrice?.toString() || '');
@@ -112,6 +113,7 @@ export const AddModelModal: React.FC<AddModelModalProps> = ({
       scale,
       manufacturerId,
       customManufacturer: customManufacturer.trim() || selectedBrand?.name || 'Custom Maker',
+      series: series.trim() || undefined,
       condition,
       releaseYear: releaseYear ? parseInt(releaseYear, 10) : undefined,
       purchasePrice: purchasePrice ? parseFloat(purchasePrice) : undefined,
@@ -291,6 +293,24 @@ export const AddModelModal: React.FC<AddModelModalProps> = ({
                     </option>
                   ))}
                   <option value="custom">Other / Custom Brand</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="text-xs text-slate-400 block mb-1 font-medium">Casting Series / Line</label>
+                <select
+                  value={series}
+                  onChange={(e) => setSeries(e.target.value)}
+                  className="w-full bg-slate-900 text-sm text-slate-100 px-3.5 py-2.5 rounded-xl border border-slate-800 focus:border-red-500 focus:outline-none font-mono text-xs font-semibold"
+                >
+                  <option value="Hot Wheels Silver Series">Hot Wheels Silver Series</option>
+                  <option value="Hot Wheels Premium Series">Hot Wheels Premium Series</option>
+                  <option value="Hot Wheels Mainline">Hot Wheels Mainline</option>
+                  <option value="Red Line Club (RLC)">Red Line Club (RLC)</option>
+                  <option value="Matchbox Moving Parts / Collectors">Matchbox Moving Parts / Collectors</option>
+                  <option value="Mini GT Standard / Chase">Mini GT Standard / Chase</option>
+                  <option value="Standard / Mainline">Standard / Mainline</option>
+                  <option value="Other / Special Series">Other / Special Series</option>
                 </select>
               </div>
 

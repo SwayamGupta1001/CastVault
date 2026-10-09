@@ -24,6 +24,7 @@ export interface DiecastItem {
   vehicleModel: string;
   manufacturerId?: string;
   customManufacturer?: string;
+  series?: string;
   scale: ScaleOption;
   releaseYear?: number;
   condition: ConditionOption;

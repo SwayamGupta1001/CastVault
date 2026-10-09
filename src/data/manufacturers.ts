@@ -14,6 +14,54 @@ export const MANUFACTURERS: Manufacturer[] = [
     websiteUrl: 'https://creations.mattel.com/pages/hot-wheels'
   },
   {
+    id: 'm-hw-silver',
+    name: 'Hot Wheels Silver Series',
+    slug: 'hot-wheels-silver-series',
+    country: 'United States',
+    countryFlag: '🇺🇸',
+    tier: 'Mid Collector',
+    primaryScales: ['1:64'],
+    foundingYear: 2023,
+    description: 'Hot Wheels Silver Series features elevated mid-tier 1:64 diecast castings with full-metal bodies, enhanced card art, exclusive liveries, and detailed tampo prints above mainline.',
+    websiteUrl: 'https://creations.mattel.com/pages/hot-wheels'
+  },
+  {
+    id: 'm-hw-premium',
+    name: 'Hot Wheels Premium Series',
+    slug: 'hot-wheels-premium-series',
+    country: 'United States',
+    countryFlag: '🇺🇸',
+    tier: 'Mid Collector',
+    primaryScales: ['1:64'],
+    foundingYear: 2018,
+    description: 'Hot Wheels Premium Series (Car Culture, Boulevard, Pop Culture, Replica Entertainment) delivers full Metal/Metal body & chassis construction, Real Riders rubber tires, and display-grade card art.',
+    websiteUrl: 'https://creations.mattel.com/pages/hot-wheels'
+  },
+  {
+    id: 'm-cca',
+    name: 'CCA',
+    slug: 'cca',
+    country: 'China',
+    countryFlag: '🇨🇳',
+    tier: 'Mid Collector',
+    primaryScales: ['1:64', '1:43', '1:24'],
+    foundingYear: 2018,
+    description: 'CCA (Car Culture Art) produces detailed diecast model vehicles, focusing on popular 1:64 and 1:43 scale JDM legends, modern sports cars, and street performance castings.',
+    websiteUrl: 'https://www.ccadiecast.com'
+  },
+  {
+    id: 'm-majorette',
+    name: 'Majorette',
+    slug: 'majorette',
+    country: 'France',
+    countryFlag: '🇫🇷',
+    tier: 'Budget Peg',
+    primaryScales: ['1:64'],
+    foundingYear: 1964,
+    description: 'Founded in Lyon, France in 1964, Majorette is a legendary European diecast brand known for functional suspension, opening doors, realistic headlamp inserts, and popular series like Premium, Deluxe, and Tune-Up\'s.',
+    websiteUrl: 'https://www.majorette.com'
+  },
+  {
     id: 'm-minigt',
     name: 'Mini GT',
     slug: 'mini-gt',
