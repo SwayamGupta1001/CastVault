@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { SignatureAnimation } from './SignatureAnimation';
-import { Car, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
+import { CastVaultLogo } from './CastVaultLogo';
 
 interface StartupLoaderProps {
   onFinish?: () => void;
@@ -56,10 +57,8 @@ export const StartupLoader: React.FC<StartupLoaderProps> = ({ onFinish }) => {
       <div className="relative z-10 flex flex-col items-center text-center space-y-6 max-w-sm mx-auto">
         
         {/* Brand Icon Header */}
-        <div className="flex items-center gap-2 mb-2">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center text-white shadow-xl shadow-red-950/60 border border-red-500/30">
-            <Car className="w-5 h-5" />
-          </div>
+        <div className="flex items-center gap-3 mb-2">
+          <CastVaultLogo className="w-12 h-12 rounded-2xl shadow-xl shadow-red-950/60" />
           <h1 className="font-extrabold text-2xl tracking-wider text-slate-100 uppercase font-mono">
             Cast<span className="text-red-500">Vault</span>
           </h1>

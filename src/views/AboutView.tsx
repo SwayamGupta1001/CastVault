@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { triggerHaptic } from '../utils/haptics';
-import { Sparkles, CheckCircle, Bug, Send, Car, ExternalLink } from 'lucide-react';
+import { Sparkles, CheckCircle, Bug, Send, ExternalLink } from 'lucide-react';
 import { SignatureAnimation } from '../components/SignatureAnimation';
+import { CastVaultLogo } from '../components/CastVaultLogo';
 
 export const AboutView: React.FC = () => {
   const [bugMessage, setBugMessage] = useState('');
@@ -20,8 +21,8 @@ export const AboutView: React.FC = () => {
     <div className="space-y-8 pb-24 md:pb-12 max-w-4xl mx-auto">
       {/* Platform Mission Hero Banner */}
       <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-4 relative overflow-hidden text-center sm:text-left">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-950/80 text-red-400 text-xs font-bold font-mono border border-red-500/30 mb-2">
-          <Car className="w-4 h-4 text-red-400" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-950/80 text-red-400 text-xs font-bold font-mono border border-red-500/30 mb-2">
+          <CastVaultLogo className="w-5 h-5 rounded-lg" />
           <span>About CastVault</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-100 font-mono tracking-tight">

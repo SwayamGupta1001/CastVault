@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import type { ViewTab } from '../types';
-import { Car, Search, Settings } from 'lucide-react';
+import { Search, Settings } from 'lucide-react';
 import { triggerHaptic } from '../utils/haptics';
+import { CastVaultLogo } from './CastVaultLogo';
 
 interface NavbarProps {
   totalItems: number;
@@ -28,9 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => onTabChange('garage')}
           className="flex items-center gap-2 shrink-0 cursor-pointer group"
         >
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center text-white shadow-lg shadow-red-950/40 border border-red-500/30 group-hover:scale-105 transition-transform">
-            <Car className="w-4 h-4 sm:w-5 sm:h-5" />
-          </div>
+          <CastVaultLogo className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl group-hover:scale-105 transition-transform shadow-lg shadow-red-950/40" />
           <div>
             <div className="flex items-center gap-1">
               <h1 className="font-extrabold text-base sm:text-xl tracking-wider text-slate-100 uppercase font-mono">
