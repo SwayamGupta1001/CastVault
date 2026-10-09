@@ -2,12 +2,18 @@ export type ScaleOption = '1:64' | '1:43' | '1:24' | '1:18' | '1:12' | 'Other';
 
 export type ConditionOption = 
   | 'Mint in Box' 
+  | 'Mint in Window Box'
+  | 'Acrylic Display Case (Sealed)'
+  | 'Styrofoam Clamshell / Boxed'
   | 'Blister Pack / Carded' 
   | 'Uncarded / Out of Blister (Good)'
   | 'Loose / Mint' 
   | 'Loose / Minor Wear'
+  | 'Loose / Display Only (Dust-Free)'
+  | 'Outer Box Wear / Car Mint'
   | 'Customized / Code 3'
   | 'Restored / Repainted'
+  | 'Missing Accessories / Parts'
   | 'Damaged / For Parts';
 
 export type TierOption = 

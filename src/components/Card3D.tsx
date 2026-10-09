@@ -71,12 +71,18 @@ export const Card3D: React.FC<Card3DProps> = ({
 
   const conditionColorMap: Record<string, string> = {
     'Mint in Box': 'text-emerald-400 bg-emerald-950/60 border-emerald-800/40',
+    'Mint in Window Box': 'text-emerald-400 bg-emerald-950/60 border-emerald-800/40',
+    'Acrylic Display Case (Sealed)': 'text-cyan-400 bg-cyan-950/60 border-cyan-800/40',
+    'Styrofoam Clamshell / Boxed': 'text-teal-400 bg-teal-950/60 border-teal-800/40',
     'Blister Pack / Carded': 'text-amber-400 bg-amber-950/60 border-amber-800/40',
     'Uncarded / Out of Blister (Good)': 'text-teal-300 bg-teal-950/60 border-teal-700/40',
     'Loose / Mint': 'text-blue-400 bg-blue-950/60 border-blue-800/40',
     'Loose / Minor Wear': 'text-slate-300 bg-slate-800/80 border-slate-700/40',
+    'Loose / Display Only (Dust-Free)': 'text-sky-300 bg-sky-950/60 border-sky-700/40',
+    'Outer Box Wear / Car Mint': 'text-yellow-300 bg-yellow-950/60 border-yellow-800/40',
     'Customized / Code 3': 'text-purple-400 bg-purple-950/60 border-purple-800/40',
     'Restored / Repainted': 'text-indigo-400 bg-indigo-950/60 border-indigo-800/40',
+    'Missing Accessories / Parts': 'text-orange-400 bg-orange-950/60 border-orange-800/40',
     'Damaged / For Parts': 'text-rose-400 bg-rose-950/60 border-rose-800/40'
   };
 

@@ -84,12 +84,18 @@ export const AddModelModal: React.FC<AddModelModalProps> = ({
   // Comprehensive Collector Condition Options
   const conditions: ConditionOption[] = [
     'Mint in Box',
+    'Mint in Window Box',
+    'Acrylic Display Case (Sealed)',
+    'Styrofoam Clamshell / Boxed',
     'Blister Pack / Carded',
     'Uncarded / Out of Blister (Good)',
     'Loose / Mint',
     'Loose / Minor Wear',
+    'Loose / Display Only (Dust-Free)',
+    'Outer Box Wear / Car Mint',
     'Customized / Code 3',
     'Restored / Repainted',
+    'Missing Accessories / Parts',
     'Damaged / For Parts'
   ];
 
