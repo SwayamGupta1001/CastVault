@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import type { DiecastItem } from '../types';
 import { formatCurrency } from '../utils/currency';
-import { Edit2, Trash2, ShieldCheck, Eye } from 'lucide-react';
+import { Edit2, Trash2, ShieldCheck, Eye, Camera } from 'lucide-react';
 import { triggerHaptic } from '../utils/haptics';
 
 interface Card3DProps {
@@ -57,7 +57,8 @@ export const Card3D: React.FC<Card3DProps> = ({
     }
   };
 
-  const primaryPhoto = item.photos[item.isPrimaryPhotoIndex || 0] || 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80';
+  const hasPhoto = Boolean(item.photos && item.photos.length > 0);
+  const primaryPhoto = hasPhoto ? item.photos[item.isPrimaryPhotoIndex || 0] || item.photos[0] : null;
   const brandName = item.customManufacturer || manufacturerName || 'Diecast Maker';
 
   const scaleColorMap: Record<string, string> = {
@@ -107,14 +108,27 @@ export const Card3D: React.FC<Card3DProps> = ({
       className="group relative glass-panel rounded-2xl border border-slate-800/90 overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-red-950/30 hover:border-slate-700 flex flex-col justify-between cursor-pointer active:scale-[0.97] transition-all duration-200 ease-out select-none"
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950">
-        <img
-          src={primaryPhoto}
-          alt={`${item.releaseYear || ''} ${item.vehicleMake} ${item.vehicleModel}`}
-          loading="lazy"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/40" />
+        {hasPhoto && primaryPhoto ? (
+          <>
+            <img
+              src={primaryPhoto}
+              alt={`${item.releaseYear || ''} ${item.vehicleMake} ${item.vehicleModel}`}
+              loading="lazy"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/40" />
+          </>
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 flex flex-col items-center justify-center p-4 text-center border-b border-slate-800/80">
+            <div className="w-12 h-12 rounded-2xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 group-hover:text-red-400 group-hover:border-red-500/40 group-hover:scale-110 transition-all duration-300 shadow-inner mb-2">
+              <Camera className="w-6 h-6" />
+            </div>
+            <span className="text-xs font-extrabold text-slate-200 tracking-wider uppercase group-hover:text-white transition-colors">
+              Add the Snap
+            </span>
+            <span className="text-[10px] text-slate-500 mt-0.5 font-medium">No photo uploaded</span>
+          </div>
+        )}
 
         <div className="absolute top-3 right-3 z-10">
           <span
@@ -126,7 +140,7 @@ export const Card3D: React.FC<Card3DProps> = ({
           </span>
         </div>
 
-        {item.photos.length > 1 && (
+        {hasPhoto && item.photos.length > 1 && (
           <div className="absolute top-3 left-3 z-10 px-2 py-0.5 rounded-lg bg-slate-900/80 backdrop-blur-md text-[10px] font-medium text-slate-300 border border-slate-800">
             {item.photos.length} Photos
           </div>

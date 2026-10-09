@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { DiecastItem } from '../types';
 import { formatCurrency } from '../utils/currency';
-import { X, Tag, Hash, FileText, Edit3, Trash2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, Tag, Hash, FileText, Edit3, Trash2, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
 import { triggerHaptic } from '../utils/haptics';
 
 interface QuickPeekDrawerProps {
@@ -26,9 +26,8 @@ export const QuickPeekDrawer: React.FC<QuickPeekDrawerProps> = ({
   const [activePhotoIndex, setActivePhotoIndex] = useState(item?.isPrimaryPhotoIndex || 0);
 
   if (!item) return null;
-  const photos = item.photos && item.photos.length > 0 
-    ? item.photos 
-    : ['https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80'];
+  const hasPhotos = Boolean(item.photos && item.photos.length > 0);
+  const photos = hasPhotos ? item.photos : [];
 
   const brandName = item.customManufacturer || manufacturerName || 'Diecast Maker';
   const estimatedVal = item.estimatedValue || item.purchasePrice || 0;
@@ -71,30 +70,46 @@ export const QuickPeekDrawer: React.FC<QuickPeekDrawerProps> = ({
           
           {/* Main Photo Gallery */}
           <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 shadow-lg">
-            <img
-              src={photos[activePhotoIndex]}
-              alt={item.vehicleModel}
-              className="w-full h-full object-cover"
-            />
-            {photos.length > 1 && (
+            {hasPhotos ? (
               <>
-                <button
-                  onClick={() => setActivePhotoIndex((prev) => (prev > 0 ? prev - 1 : photos.length - 1))}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-slate-700 backdrop-blur-md"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => setActivePhotoIndex((prev) => (prev < photos.length - 1 ? prev + 1 : 0))}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-slate-700 backdrop-blur-md"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
+                <img
+                  src={photos[activePhotoIndex]}
+                  alt={item.vehicleModel}
+                  className="w-full h-full object-cover"
+                />
+                {photos.length > 1 && (
+                  <>
+                    <button
+                      onClick={() => setActivePhotoIndex((prev) => (prev > 0 ? prev - 1 : photos.length - 1))}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-slate-700 backdrop-blur-md"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => setActivePhotoIndex((prev) => (prev < photos.length - 1 ? prev + 1 : 0))}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-slate-700 backdrop-blur-md"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </>
+                )}
               </>
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 flex flex-col items-center justify-center p-6 text-center">
+                <div className="w-16 h-16 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 mb-3 shadow-lg">
+                  <Camera className="w-8 h-8 text-red-500/80" />
+                </div>
+                <span className="text-sm font-extrabold text-slate-200 uppercase tracking-wide">
+                  Add the Snap
+                </span>
+                <p className="text-xs text-slate-500 mt-1 max-w-xs font-medium">
+                  No picture has been attached to this diecast model yet.
+                </p>
+              </div>
             )}
           </div>
 
-          {photos.length > 1 && (
+          {hasPhotos && photos.length > 1 && (
             <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
               {photos.map((ph, idx) => (
                 <button

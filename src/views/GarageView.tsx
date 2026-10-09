@@ -5,7 +5,7 @@ import { Card3D } from '../components/Card3D';
 import { MANUFACTURERS } from '../data/manufacturers';
 import { formatCurrency } from '../utils/currency';
 import { triggerHaptic } from '../utils/haptics';
-import { Grid, List, Car } from 'lucide-react';
+import { Grid, List, Car, Camera } from 'lucide-react';
 
 interface GarageViewProps {
   items: DiecastItem[];
@@ -206,14 +206,21 @@ export const GarageView: React.FC<GarageViewProps> = ({
                 {filteredItems.map((item) => {
                   const brand = MANUFACTURERS.find((m) => m.id === item.manufacturerId);
                   const itemVal = item.estimatedValue || item.purchasePrice || 0;
+                  const hasPhoto = Boolean(item.photos && item.photos.length > 0);
                   return (
                     <tr key={item.id} className="hover:bg-slate-900/60 transition-colors">
                       <td className="py-2.5 px-4">
-                        <img
-                          src={item.photos[0]}
-                          alt=""
-                          className="w-12 h-9 rounded-lg object-cover border border-slate-800"
-                        />
+                        {hasPhoto ? (
+                          <img
+                            src={item.photos[item.isPrimaryPhotoIndex || 0] || item.photos[0]}
+                            alt=""
+                            className="w-12 h-9 rounded-lg object-cover border border-slate-800"
+                          />
+                        ) : (
+                          <div className="w-12 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-500" title="Add the Snap">
+                            <Camera className="w-4 h-4 text-slate-400" />
+                          </div>
+                        )}
                       </td>
                       <td className="py-2.5 px-4 font-bold text-slate-100">
                         {item.vehicleMake} {item.vehicleModel}
