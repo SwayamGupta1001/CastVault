@@ -341,8 +341,8 @@ export const AddModelModal: React.FC<AddModelModalProps> = ({
                   <option value="Red Line Club (RLC)">Red Line Club (RLC)</option>
                   <option value="Matchbox Moving Parts / Collectors">Matchbox Moving Parts / Collectors</option>
                   <option value="Mini GT Standard / Chase">Mini GT Standard / Chase</option>
-                  <option value="Standard / Mainline">Standard / Mainline</option>
                   <option value="Other / Special Series">Other / Special Series</option>
+                  <option value="Mainline">Mainline</option>
                 </select>
               </div>
 
